@@ -1,0 +1,96 @@
+<div class="container m_detail summary-content">
+  <div class="row">
+    <div class="col-lg-8">
+      <div *ngFor="let item of menu; let count = index">
+        <section id="{{ 'section-def-' + count }}" style="padding-top: 65px">
+          <h4 style="font-size: 18px; font-weight: bold">
+            {{ item.categoryTitle }}
+            <span *ngIf="item.categorySubTitle">
+              ({{ item.categorySubTitle }})
+            </span>
+          </h4>
+          <p style="text-align: justify">
+            {{ item.categoryDescription }}
+          </p>
+
+          <div class="table_wrapper">
+            <div class="container">
+              <div class="row d-flex justify-content-between hidemobile">
+                <div class="col-sm-8">
+                  <h4 style="font-size: 14px">Dish Name</h4>
+                </div>
+                <div class="col-sm-2">
+                  <h4 style="font-size: 14px">Price</h4>
+                </div>
+                <div class="col-sm-2">
+                  <h4 style="font-size: 14px">Quantity</h4>
+                </div>
+              </div>
+              <div class="row" *ngFor="let menuItemDetail of item.menuDetails">
+                <app-menuitemview (menuItemChanged)="handleMenuItemChanged($event)" [menuItem]="menuItemDetail"
+                  style="width: 100%"></app-menuitemview>
+              </div>
+            </div>
+
+            <!----  <table class="table cart-list menu-gallery ">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Dish Name
+                                    </th>
+                                    <th>
+                                        Price
+                                    </th>
+                                    <th>
+                                        Quantity
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let menuItemDetail of item.menuDetails">
+
+                                        <app-menuitemview (menuItemChanged)="handleMenuItemChanged($event)"[menuItem]="menuItemDetail"></app-menuitemview>
+
+
+
+                                     </tr>
+
+
+                            </tbody>
+                        </table>-->
+          </div>
+        </section>
+        <!-- /section -->
+      </div>
+      <!-- /col -->
+    </div>
+    <div class="col-lg-4 p-0 .d-md-none" stickySidebar>
+      <!-- Content goes here -->
+
+      <app-summary [menuItemSummaries]="menuSelections"></app-summary>
+    </div>
+  </div>
+  <!-- /row -->
+  <div class="btn_reserve_fixed" style="text-align: center">
+    <a class="btn_1 gradient" style="width: 250px">View Basket</a>
+  </div>
+</div>
+
+<!-- /container -->
+<style>
+  @media screen and (max-width: 600px) {
+    .hidemobile {
+      visibility: hidden;
+      display: none;
+    }
+  }
+
+  .padng {
+    margin: 0px 0px 0px 0px;
+  }
+
+  .m_detail {
+    margin-top: 45px;
+    margin-bottom: 60px;
+  }
+</style>

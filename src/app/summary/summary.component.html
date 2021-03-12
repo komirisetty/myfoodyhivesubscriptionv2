@@ -1,0 +1,288 @@
+<div class="m-top">
+  <div class="container card">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="box_order mobile_fixed">
+          <div class="head">
+            <h3>Order Summary</h3>
+            <a href="#0" class="close_panel_mobile"
+              ><i class="icon_close"></i
+            ></a>
+          </div>
+          <!-- /head -->
+          <div class="main">
+            <p>
+              <img src="img/largeicon.jpg" class="img-fluid" />
+            </p>
+
+            <ul class="clearfix">
+              <li
+                *ngFor="let summaryInfo of menuItemSummaries"
+                class="d-flex justify-content-between"
+              >
+                <p>
+                  {{ summaryInfo.quantity }}x &nbsp;
+                  {{ summaryInfo.dishName }}
+                </p>
+
+                <p>
+                  {{ summaryInfo.saleAmount }}
+                </p>
+              </li>
+
+              <!-- <li><a href="#0">1x Masala Dosa</a><span>Rs.50</span></li>
+                        <li><a href="#0">2x Idli</a><span>Rs.50</span></li>
+                        <li><a href="#0">1x Egg Biryani</a><span>Rs.50</span></li>
+                        <li><a href="#0">2x Orange Juice</a><span>Rs.50</span></li>
+                        <li><a href="#0">2x Cheese Cake</a><span>Rs.50</span></li> -->
+            </ul>
+
+            <ul class="clearfix">
+              <li>
+                Subtotal<span> {{ subtotal }} </span>
+              </li>
+              <li>
+                Delivery fee<span>{{ deliveryFee | priceview: "FREE" }} </span>
+              </li>
+              <li>
+                Packaging fee<span>{{
+                  packagingCharges | priceview: "FREE"
+                }}</span>
+              </li>
+              <li>
+                Tax: (5%) <span>{{ tax | priceview: "0" }}</span>
+              </li>
+              <li class="total">
+                Total<span>{{ total | priceview: "0" }}</span>
+              </li>
+            </ul>
+
+            <div class="row opt_order">
+              <div class="col-4">
+                <label
+                  class="container_radio"
+                  style="padding-left: 25px; font-size: 10px"
+                  >Only Once
+                  <input
+                    type="radio"
+                    [(ngModel)]="deliveryPlan"
+                    value="only once"
+                    name="opt_order"
+                    checked
+                  />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="col-4">
+                <label
+                  class="container_radio"
+                  style="padding-left: 25px; font-size: 10px"
+                  >Weekly Plan
+                  <input
+                    type="radio"
+                    [(ngModel)]="deliveryPlan"
+                    value="Weekly"
+                    name="opt_order"
+                    checked
+                  />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="col-4">
+                <label
+                  class="container_radio"
+                  style="padding-left: 25px; font-size: 10px"
+                  >Monthly Plan
+                  <input
+                    type="radio"
+                    [(ngModel)]="deliveryPlan"
+                    value="Monthly"
+                    name="opt_order"
+                  />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+            </div>
+            <div class="dropdown day">
+              <a href="#" data-toggle="dropdown"
+                >Day
+                <span style="font-size: 12px; color: gray">
+                  : {{ deliveryDate }}
+                </span>
+                <span id="selected_day"></span
+              ></a>
+              <div class="dropdown-menu">
+                <div class="dropdown-menu-content">
+                  <h4>Which day delivered?</h4>
+                  <div class="radio_select chose_day">
+                    <ul>
+                      <li *ngIf="isTodayAvailable">
+                        <input
+                          type="radio"
+                          id="day_1"
+                          [(ngModel)]="deliveryDate"
+                          name="day"
+                          value="Today"
+                        />
+                        <!--<label for="day_1">Today<em>-40%</em></label>-->
+                        <label for="day_1">Today</label>
+                      </li>
+
+                      <li>
+                        <input
+                          type="radio"
+                          id="day_2"
+                          name="day"
+                          [(ngModel)]="deliveryDate"
+                          value="Tomorrow"
+                        />
+                        <!--<label for="day_2">Tomorrow<em>-40%</em></label>-->
+                        <label for="day_2">Tomorrow</label>
+                      </li>
+                    </ul>
+                  </div>
+                  <!-- /people_select -->
+                </div>
+              </div>
+            </div>
+            <!-- /dropdown -->
+            <div class="dropdown time">
+              <a href="#" data-toggle="dropdown"
+                >Time
+                <span style="font-size: 12px; color: gray"
+                  >: {{ deliveryTime }} </span
+                ><span id="selected_time"></span
+              ></a>
+              <div class="dropdown-menu">
+                <div class="dropdown-menu-content">
+                  <h4>Lunch</h4>
+                  <div class="radio_select add_bottom_15">
+                    <ul>
+                      <li>
+                        <input
+                          type="radio"
+                          id="time_1"
+                          name="time"
+                          [(ngModel)]="deliveryTime"
+                          value="12.00pm"
+                        />
+                        <!--<label for="time_1">12.00<em>-40%</em></label>-->
+                        <label for="time_1">12.00</label>
+                      </li>
+                      <li>
+                        <input
+                          type="radio"
+                          id="time_2"
+                          name="time"
+                          [(ngModel)]="deliveryTime"
+                          value="12.30pm"
+                        />
+                        <!--<label for="time_2">12.30<em>-40%</em></label>-->
+                        <label for="time_2">12.30</label>
+                      </li>
+                      <li>
+                        <input
+                          type="radio"
+                          id="time_3"
+                          name="time"
+                          [(ngModel)]="deliveryTime"
+                          value="01.00pm"
+                        />
+                        <label for="time_3">13.00</label>
+                        <!----  <label for="time_3">1.00<em>-40%</em></label>-->
+                      </li>
+                      <li>
+                        <input
+                          type="radio"
+                          id="time_4"
+                          name="time"
+                          [(ngModel)]="deliveryTime"
+                          value="01.30pm"
+                        />
+                        <label for="time_4">13.30</label>
+                        <!---- <label for="time_4">1.30<em>-40%</em></label>-->
+                      </li>
+                    </ul>
+                  </div>
+                  <!-- /time_select -->
+                  <h4>Dinner</h4>
+                  <div class="radio_select">
+                    <ul>
+                      <li>
+                        <input
+                          type="radio"
+                          id="time_5"
+                          name="time"
+                          [(ngModel)]="deliveryTime"
+                          value="08.00pm"
+                        />
+                        <!--<label for="time_1">20.00<em>-40%</em></label>-->
+                        <label for="time_5">20.00</label>
+                      </li>
+                      <li>
+                        <input
+                          type="radio"
+                          id="time_6"
+                          name="time"
+                          [(ngModel)]="deliveryTime"
+                          value="08.30pm"
+                        />
+                        <!--<label for="time_2">20.30<em>-40%</em></label>-->
+                        <label for="time_6">20.30</label>
+                      </li>
+                      <li>
+                        <input
+                          type="radio"
+                          id="time_7"
+                          name="time"
+                          [(ngModel)]="deliveryTime"
+                          value="09.00pm"
+                        />
+                        <!--<label for="time_3">21.00<em>-40%</em></label>-->
+                        <label for="time_7">21.00</label>
+                      </li>
+                      <li>
+                        <input
+                          type="radio"
+                          id="time_8"
+                          name="time"
+                          [(ngModel)]="deliveryTime"
+                          value="09.30pm"
+                        />
+                        <!---- <label for="time_4">21.30<em>-40%</em></label>-->
+                        <label for="time_8">21.30</label>
+                      </li>
+                    </ul>
+                  </div>
+                  <!-- /time_select -->
+                </div>
+              </div>
+            </div>
+            <!-- /dropdown -->
+            <div class="btn_1_mobile">
+              <div id="divsubclick" (mouseover)="validcheck()">
+                <a
+                  (click)="navigate($event)"
+                  id="subclick"
+                  class="btn_1 gradient full-width mb_5"
+                  >Subscribe Now</a
+                >
+              </div>
+              <div class="text-center">
+                <small>No money charged on this steps</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /box_order -->
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  @media only screen and (min-width: 600px) {
+    .m-top {
+      margin-top: 60px;
+    }
+  }
+</style>
