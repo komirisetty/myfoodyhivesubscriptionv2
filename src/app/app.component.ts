@@ -17,7 +17,10 @@ export class AppComponent implements OnInit {
   title = 'fhsubscriptions';
   public menuCategories: MenuCategoryInfo[] = [];
   public subscription: Subscription;
-
+  
+  constructor(private myMonitoringService: MyMonitoringService) {    
+    }
+  
   constructor(private menuService: MenuService, private router: Router) {
     this.subscription =
       this
