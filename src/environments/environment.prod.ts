@@ -6,9 +6,7 @@ export const environment = {
   production: true,
   menuItemsJsonUrl: 'https://foodyhivestorage.blob.core.windows.net/assets/data/subscription-requests.json',
   subscriptionRequestServiceUrl: 'https://foodyhivesubscriptionrequest.azurewebsites.net/api/SubscriptionRequest/create',
-  appInsights: {
-        instrumentationKey: 'a6e8cdf0-3a1e-463d-bb58-565713b7483e'
-    }
+  instrumentationKey: 'a6e8cdf0-3a1e-463d-bb58-565713b7483e'
 };
 
 /*
