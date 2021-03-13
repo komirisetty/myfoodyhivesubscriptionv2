@@ -18,10 +18,7 @@ export class AppComponent implements OnInit {
   public menuCategories: MenuCategoryInfo[] = [];
   public subscription: Subscription;
   
-  constructor(private myMonitoringService: MyMonitoringService) {    
-    }
-  
-  constructor(private menuService: MenuService, private router: Router) {
+  constructor(private menuService: MenuService, private router: Router,private myMonitoringService: MyMonitoringService ) {
     this.subscription =
       this
         .router
