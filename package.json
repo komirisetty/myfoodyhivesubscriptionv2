@@ -24,7 +24,8 @@
     "rxjs": "~6.6.0",
     "sticky-sidebar": "^3.3.1",
     "tslib": "^2.0.0",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "@microsoft/applicationinsights-web": "~2.4.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1001.0",
@@ -44,6 +45,7 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.0.2"
+    "typescript": "~4.0.2",
+    "@microsoft/applicationinsights-web": "~2.4.4"
   }
 }
