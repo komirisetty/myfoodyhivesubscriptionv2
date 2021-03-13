@@ -5,6 +5,7 @@ import { Menu } from './models/menu';
 import { MenuCategoryInfo } from './models/menu-category-info';
 import { MenuResponse } from './models/menu-response';
 import { MenuService } from './services/menu.service';
+import { MyMonitoringService } from './services/logging.service';
 
 export let browserRefresh: boolean = false;
 
@@ -18,7 +19,7 @@ export class AppComponent implements OnInit {
   public menuCategories: MenuCategoryInfo[] = [];
   public subscription: Subscription;
   
-  constructor(private menuService: MenuService, private router: Router,private myMonitoringService: MyMonitoringService ) {
+  constructor(private menuService: MenuService, private router: Router, private myMonitoringService: MyMonitoringService ) {
     this.subscription =
       this
         .router
