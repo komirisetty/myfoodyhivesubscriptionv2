@@ -35,3 +35,4 @@ export class MyMonitoringService {
   logTrace(message: string, properties?: { [key: string]: any }) {
     this.appInsights.trackTrace({ message: message}, properties);
   }
+}
